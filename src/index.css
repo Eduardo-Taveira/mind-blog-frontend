@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Variáveis de tema — sobrescritas pelo ThemeContext via JS */
+:root {
+  --bg-primary:    #111111;
+  --bg-surface:    #1c1c1c;
+  --bg-input:      #1a1a1a;
+  --border:        #2a2a2a;
+  --text-primary:  #ffffff;
+  --text-secondary:#9ca3af;
+  --text-muted:    #6b7280;
+  --nav-bg:        #111111;
+  --nav-border:    #1f1f1f;
+  --accent:        #00CFCF;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0; padding: 0;
+  width: 100%; min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#root { display: flex; flex-direction: column; }
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+.input-dark {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: 6px;
+  padding: 10px 14px;
+  width: 100%;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.input-dark:focus { border-color: var(--accent); }
+.input-dark::placeholder { color: var(--text-muted); }
