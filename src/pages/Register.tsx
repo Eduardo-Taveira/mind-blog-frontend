@@ -6,6 +6,55 @@ import api from '../api/axios';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
+const inputBase: React.CSSProperties = {
+  backgroundColor: 'var(--bg-input)',
+  border: '1px solid var(--border)',
+  color: 'var(--text-primary)',
+  borderRadius: '6px', padding: '10px 14px',
+  width: '100%', outline: 'none',
+  fontFamily: 'Inter, sans-serif', fontSize: '14px',
+  boxSizing: 'border-box', transition: 'border-color 0.2s',
+};
+
+// Campo com toggle de olho reutilizável movido para fora do Register
+function PasswordField({
+  label, value, onChange, show, onToggle, placeholder = '••••••••'
+}: {
+  label: string; value: string;
+  onChange: (v: string) => void;
+  show: boolean; onToggle: () => void;
+  placeholder?: string;
+}) {
+  return (
+    <div>
+      <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '6px' }}>
+        {label}
+      </label>
+      <div style={{ position: 'relative' }}>
+        <input
+          type={show ? 'text' : 'password'}
+          placeholder={placeholder}
+          value={value}
+          onChange={e => onChange(e.target.value)}
+          style={{ ...inputBase, paddingRight: '42px' }}
+          onFocus={e => (e.target.style.borderColor = '#00CFCF')}
+          onBlur={e => (e.target.style.borderColor = 'var(--border)')}
+        />
+        <button type="button" onClick={onToggle}
+          title={show ? 'Esconder senha' : 'Mostrar senha'}
+          style={{
+            position: 'absolute', right: '12px', top: '50%',
+            transform: 'translateY(-50%)',
+            background: 'none', border: 'none', cursor: 'pointer',
+            color: 'var(--text-muted)', padding: 0, display: 'flex',
+          }}>
+          {show ? <EyeOff size={16} /> : <Eye size={16} />}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function Register() {
 
   const navigate = useNavigate();
@@ -39,55 +88,6 @@ export default function Register() {
     } finally {
       setLoading(false);
     }
-  }
-
-  const inputBase: React.CSSProperties = {
-    backgroundColor: 'var(--bg-input)',
-    border: '1px solid var(--border)',
-    color: 'var(--text-primary)',
-    borderRadius: '6px', padding: '10px 14px',
-    width: '100%', outline: 'none',
-    fontFamily: 'Inter, sans-serif', fontSize: '14px',
-    boxSizing: 'border-box', transition: 'border-color 0.2s',
-  };
-
-  // Campo com toggle de olho reutilizável
-  function PasswordField({
-    label, value, onChange, show, onToggle, placeholder = '••••••••'
-  }: {
-    label: string; value: string;
-    onChange: (v: string) => void;
-    show: boolean; onToggle: () => void;
-    placeholder?: string;
-  }) {
-    return (
-      <div>
-        <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '6px' }}>
-          {label}
-        </label>
-        <div style={{ position: 'relative' }}>
-          <input
-            type={show ? 'text' : 'password'}
-            placeholder={placeholder}
-            value={value}
-            onChange={e => onChange(e.target.value)}
-            style={{ ...inputBase, paddingRight: '42px' }}
-            onFocus={e => (e.target.style.borderColor = '#00CFCF')}
-            onBlur={e => (e.target.style.borderColor = 'var(--border)')}
-          />
-          <button type="button" onClick={onToggle}
-            title={show ? 'Esconder senha' : 'Mostrar senha'}
-            style={{
-              position: 'absolute', right: '12px', top: '50%',
-              transform: 'translateY(-50%)',
-              background: 'none', border: 'none', cursor: 'pointer',
-              color: 'var(--text-muted)', padding: 0, display: 'flex',
-            }}>
-            {show ? <EyeOff size={16} /> : <Eye size={16} />}
-          </button>
-        </div>
-      </div>
-    );
   }
 
   return (
