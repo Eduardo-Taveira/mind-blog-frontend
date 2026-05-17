@@ -2,10 +2,12 @@
 
 Interface web do sistema de blog desenvolvido como case técnico da Mind Group.
 
+Repositório do backend: [https://github.com/Eduardo-Taveira/mind-blog-backend](https://github.com/Eduardo-Taveira/mind-blog-backend)
+
 ---
 
-> **Pré-requisito:** o backend precisa estar rodando em `http://localhost:3000` antes de iniciar o frontend.
-> Repositório do backend: [REPO-BACKEND-URL]
+> ⚠️ **Pré-requisito:** o backend precisa estar rodando em `http://localhost:3000` antes de iniciar o frontend.
+> Siga o README do backend antes de continuar.
 
 ---
 
@@ -24,18 +26,22 @@ Interface web do sistema de blog desenvolvido como case técnico da Mind Group.
 
 ## Pré-requisitos do ambiente
 
-- Node.js 18+
-- npm
+Instale antes de começar:
+
+- [Node.js 18+](https://nodejs.org) — baixe a versão LTS
+- [Git](https://git-scm.com)
 
 ---
 
 ## Instalação
 
 ```bash
-git clone <URL-DESTE-REPOSITÓRIO>
-cd blog-frontend
+git clone https://github.com/Eduardo-Taveira/mind-blog-frontend
+cd mind-blog-frontend
 npm install
 ```
+
+> ⚠️ **Atenção:** a pasta criada pelo clone se chama `mind-blog-frontend`, não `blog-frontend`.
 
 ---
 
@@ -55,11 +61,22 @@ Não há arquivo `.env` necessário para rodar o projeto em desenvolvimento.
 
 ## Rodando em modo desenvolvimento
 
+Abra um **novo terminal** (separado do terminal do backend) e rode:
+
 ```bash
 npm run dev
 ```
 
-Acesse em: [http://localhost:5173](http://localhost:5173)
+Você verá uma mensagem como:
+```
+VITE v8.x.x  ready in Xms
+
+➜  Local:   http://localhost:5173/
+```
+
+Abra [http://localhost:5173](http://localhost:5173) no navegador.
+
+> ⚠️ **Certifique-se de que o backend está rodando** antes de abrir o frontend, caso contrário as requisições vão falhar.
 
 ---
 
